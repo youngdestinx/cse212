@@ -2,6 +2,18 @@
 {
     //Count how many duplicates are in a collection of data.
 
+    /* Implement the CountDuplicates function in the DuplicareCounter class using a set. This function should 
+    make use of a set to help in counting duplicates. */
+
+    /**********************************************************************************************************/
+    /*................................The Logic for solving this problem.....................................*/
+    /*  1.  create a set to contain all the data without a duplicate
+        2.  create a duplicate variable to contain the number of duplicate
+        3.  return the number of duplicate 
+        4.  create a method to achieve this. */
+
+    /* The forloop ends because it seperate the data into a set while the list contains the duplicate. It loops
+    through all the item in the data and update the number of duplicate in it. */
     public static void Run()
     {
         int[] data = [
@@ -25,6 +37,27 @@
     private static int CountDuplicates(int[] data)
     {
         // Add code here.
-        return 0;
+        var set = new HashSet<int>();
+        var duplicate = 0;
+        foreach(var x in data)
+        {
+            if (set.Contains(x))
+            {
+                duplicate++;
+            }
+            else
+            {
+                set.Add(x);
+            }
+        }
+
+        return duplicate;
     }
 }
+
+/*********************************Loop and If Statement************************************************************/
+/*  A loop statement can be used to iterate all through the list or iterable container.
+While the if-else statement is used to seperate the data into different specifics. Just like a function have a 
+single responsibility, a variable stores a single data type and the if-else statement can be used to update or
+append data to the variable. This is a really useful concepts. */
+
