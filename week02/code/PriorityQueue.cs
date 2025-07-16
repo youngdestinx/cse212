@@ -31,11 +31,6 @@ public class PriorityQueue
             {
                 highPriorityIndex = index;
             }
-
-            else if (_queue[index].Priority == _queue[highPriorityIndex].Priority && index < highPriorityIndex)
-            {
-                highPriorityIndex = index;
-            }
         }
 
         value = _queue[highPriorityIndex].Value;
