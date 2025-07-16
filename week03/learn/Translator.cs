@@ -12,6 +12,15 @@ public class Translator
     }
 
     private Dictionary<string, string> _words = new();
+    /***********************************Steps For Writing the Codes******************************************/
+    /// <steps>
+    /// 1. Create a dictionary of strings for the key and value pair
+    /// 2. For the AddWord function, simply add a key-value pair with the "from_word" as the key and
+    ///    the "to_word" as the value.
+    /// 3. For the Translate function, use the get value method for dictionary to get the value (to_word) from
+    ///    the key (from_word)
+    /// </steps>
+    /******************************************************************************************************/
 
     /// <summary>
     /// Add the translation from 'from_word' to 'to_word'
@@ -25,6 +34,7 @@ public class Translator
     public void AddWord(string fromWord, string toWord)
     {
         // ADD YOUR CODE HERE
+        _words[fromWord] = toWord;
     }
 
     /// <summary>
@@ -35,6 +45,26 @@ public class Translator
     public string Translate(string fromWord)
     {
         // ADD YOUR CODE HERE
-        return "";
+        var Word = "???";
+        if (_words.ContainsKey(fromWord))
+        {
+            Word = _words[fromWord];
+        }
+        return Word;
     }
 }
+
+/********************An Instance of a Class in a Class?*******************************************************/
+/*  Yes, you are correct, this class contain a method, which is an instance of another method. It can be done. */
+
+
+/************************************************Conditional Statement****************************************/
+/// <Description>
+/// One of the usefullness of a conditional statement such as an if statement is to update a value or append 
+/// value to a variable. 
+/// 
+/// You can declare a variable outside the scope of the conditional statement and use the conditional statement to
+/// update it value or append to it, just like what a function will do.
+/// 
+/// In this project, a conditional statement was used to achieve the Translate function responsibilty.
+/// </Description>

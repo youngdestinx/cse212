@@ -1,4 +1,4 @@
-﻿public class PriorityQueue
+public class PriorityQueue
 {
     private List<PriorityItem> _queue = new();
 
@@ -28,6 +28,11 @@
         for (int index = 1; index < _queue.Count; index++)
         {
             if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
+            {
+                highPriorityIndex = index;
+            }
+
+            else if (_queue[index].Priority == _queue[highPriorityIndex].Priority && index < highPriorityIndex)
             {
                 highPriorityIndex = index;
             }
