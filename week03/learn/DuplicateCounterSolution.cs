@@ -71,7 +71,7 @@
 based on a unique equation. The index is determined using an equation index(n) = n. so If n = 3; then the index
 of the data is 3. If the digit is 5 then the index is 5.
 
-We could now see that the data index is determined by an equation, this makes the index of a set to the same as
+We could now see that the data index is determined by an equation, this makes the index of a set to be the same as
 a data, therefore, a set cannot contain duplicate and it is not filled orderly. Position is not relevant.
 
 The most important task of a set is to find the membership of a data in a set, since ideally, there can only be 
