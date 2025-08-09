@@ -12,10 +12,18 @@ public static class Recursion
     /// to identify a base case (terminating case).  If the value of
     /// n <= 0, just return 0.   A loop should not be used.
     /// </summary>
+    /// 
+    /// <plan>
+    /// 1. Identify the base case: If n is less than or equal to 0, return 0.
+    /// 2. Express the solution in terms of a recursive call on a smaller problem: n^2 + SumSquareRecursive(n-1)
+    /// </plan>
     public static int SumSquaresRecursive(int n)
     {
         // TODO Start Problem 1
+        if (n <= 0)
         return 0;
+
+        return n * n + SumSquaresRecursive(n-1);
     }
 
     /// <summary>
@@ -37,9 +45,29 @@ public static class Recursion
     /// You can assume that the size specified is always valid (between 1 
     /// and the length of the letters list).
     /// </summary>
+    /// 
+    /// <plan>
+    /// 1. create a recursive function that takes the current permutation and the remaining letters as parameters
+    /// 2. if the length of the current permutation is equal to size, add it to the result list.
+    /// 3. otherwise, iterate over the remaining letters, add each letter to the current permutation, and
+    ///    recursively call the function with the updated permutation and remaining letters.
+    /// </plan>
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
         // TODO Start Problem 2
+        if (word.Length == size)
+        {
+            results.Add(word);
+            return;
+        }
+
+        foreach (char letter in letters)
+        {
+            if (!word.Contains(letter))
+            {
+                PermutationsChoose(results, letters, size, word + letter);               
+            }
+        }
     }
 
     /// <summary>
@@ -97,9 +125,13 @@ public static class Recursion
             return 4;
 
         // TODO Start Problem 3
+        if (remember == null) remember = new Dictionary<int, decimal>();
 
+        if (remember.ContainsKey(s)) return remember[s];
+        
         // Solve using recursion
-        decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        decimal ways = CountWaysToClimb(s - 1, remember) + CountWaysToClimb(s - 2, remember) + CountWaysToClimb(s - 3, remember);
+        remember[s] = ways;
         return ways;
     }
 
@@ -116,9 +148,30 @@ public static class Recursion
     /// Using recursion, insert all possible binary strings for a given pattern into the results list.  You might find 
     /// some of the string functions like IndexOf and [..X] / [X..] to be useful in solving this problem.
     /// </summary>
+    /// 
+    /// <plan>
+    /// 1. find the index of the first * in the pattern
+    /// 2. if there is no * characters, add the pattern to the result list
+    /// 3. if there is a * character, replace it with 0 and 1 and recursively generate all possible binary strings
+    ///    for the updated patterns.
+    /// 4. continue this process until all * characters have been replaced.
+    /// </plan>
     public static void WildcardBinary(string pattern, List<string> results)
     {
         // TODO Start Problem 4
+        int index = pattern.IndexOf("*");
+        if (index == -1)
+        {
+            results.Add(pattern);
+        }
+
+        else
+        {
+            string pattern0 = pattern.Substring(0, index) + "0" + pattern.Substring(index + 1);
+            string pattern1 = pattern.Substring(0, index) + "1" + pattern.Substring(index + 1);
+            WildcardBinary(pattern0, results);
+            WildcardBinary(pattern1, results);
+        }
     }
 
     /// <summary>
